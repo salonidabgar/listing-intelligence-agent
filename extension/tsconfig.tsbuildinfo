@@ -1,0 +1,1 @@
+{"root":["./src/background/index.ts","./src/content/index.ts","./src/content/scraper.ts","./src/lib/api.ts","./src/lib/config.ts","./src/lib/sample.ts","./src/lib/types.ts","./src/sidepanel/app.tsx","./src/sidepanel/main.tsx","./manifest.config.ts","./vite.config.ts"],"version":"5.9.3"}

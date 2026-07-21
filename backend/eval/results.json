@@ -1,0 +1,263 @@
+{
+  "model": "claude-sonnet-4-6",
+  "accuracy": 96.7741935483871,
+  "precision": 95.23809523809524,
+  "recall": 100,
+  "f1": 97.5609756097561,
+  "fpRate": 9.090909090909092,
+  "specRecall": 100,
+  "TP": 20,
+  "FP": 1,
+  "TN": 10,
+  "FN": 0,
+  "rows": [
+    {
+      "id": "A1",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 4,
+      "specTotal": 4
+    },
+    {
+      "id": "A2",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 2,
+      "specTotal": 2
+    },
+    {
+      "id": "A3",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 3,
+      "specTotal": 3
+    },
+    {
+      "id": "A4",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 3,
+      "specTotal": 3
+    },
+    {
+      "id": "A5",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 4,
+      "specTotal": 4
+    },
+    {
+      "id": "A6",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 3,
+      "specTotal": 3
+    },
+    {
+      "id": "A7",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 4,
+      "specTotal": 4
+    },
+    {
+      "id": "A8",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 2,
+      "specTotal": 2
+    },
+    {
+      "id": "B1",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 3,
+      "specTotal": 3
+    },
+    {
+      "id": "B2",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 4,
+      "specTotal": 4
+    },
+    {
+      "id": "B3",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 2,
+      "specTotal": 2
+    },
+    {
+      "id": "B4",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 5,
+      "specTotal": 5
+    },
+    {
+      "id": "C1",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "C2",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "C3",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "C4",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "C5",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "D1",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "D2",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "E1",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 1,
+      "specTotal": 1
+    },
+    {
+      "id": "E2",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 1,
+      "specTotal": 1
+    },
+    {
+      "id": "E3",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 1,
+      "specTotal": 1
+    },
+    {
+      "id": "F1",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 3,
+      "specTotal": 3
+    },
+    {
+      "id": "F2",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 2,
+      "specTotal": 2
+    },
+    {
+      "id": "G1",
+      "expected": false,
+      "got": true,
+      "correct": false,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "G2",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "G3",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 1,
+      "specTotal": 1
+    },
+    {
+      "id": "G4",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "G5",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "G6",
+      "expected": false,
+      "got": false,
+      "correct": true,
+      "specMatched": 0,
+      "specTotal": 0
+    },
+    {
+      "id": "G7",
+      "expected": true,
+      "got": true,
+      "correct": true,
+      "specMatched": 1,
+      "specTotal": 1
+    }
+  ]
+}

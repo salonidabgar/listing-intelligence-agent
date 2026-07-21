@@ -1,0 +1,21 @@
+{
+  "name": "listing-creative-ai-backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vercel serverless backend for Listing Creative AI: creative brief (Claude) + image generation (Gemini 2.5 Flash Image).",
+  "scripts": {
+    "dev": "tsx dev-server.ts",
+    "eval": "tsx eval/run.ts",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.112.3",
+    "@google/genai": "^1.30.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^5.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

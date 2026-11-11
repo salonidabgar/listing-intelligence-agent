@@ -5,8 +5,6 @@ import type {
   RuntimeMessage,
   Draft,
   Verdict,
-  DriftReport,
-  BaselineRecord,
 } from './types'
 
 // Ask the content script in the active Amazon tab to scrape the listing.
@@ -56,55 +54,31 @@ export async function* streamResearch(
   if (tail) yield JSON.parse(tail) as ResearchEvent
 }
 
+// POST JSON with a hard timeout, so a stalled or rate-limited request fails with
+// a clear message instead of spinning forever.
+async function postJson<T>(path: string, body: unknown, timeoutMs = 90000): Promise<T> {
+  const ctrl = new AbortController()
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs)
+  try {
+    const res = await fetch(`${API_BASE}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: ctrl.signal,
+    })
+    if (!res.ok) throw new Error(`${path} failed: ${res.status} ${await res.text()}`)
+    return (await res.json()) as T
+  } catch (e) {
+    if (e instanceof DOMException && e.name === 'AbortError') {
+      throw new Error(`Timed out after ${Math.round(timeoutMs / 1000)}s — the model may be rate-limited. Try again.`)
+    }
+    throw e
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 // Re-verify a draft the user edited by hand.
-export async function reVerify(listing: ScrapedListing, draft: Draft): Promise<Verdict> {
-  const res = await fetch(`${API_BASE}/api/verify`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ listing, draft }),
-  })
-  if (!res.ok) throw new Error(`verify failed: ${res.status} ${await res.text()}`)
-  return (await res.json()) as Verdict
-}
-
-// Compare an approved baseline vs the current live listing.
-export async function checkDrift(
-  baseline: ScrapedListing,
-  current: ScrapedListing
-): Promise<DriftReport> {
-  const res = await fetch(`${API_BASE}/api/drift`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ baseline, current }),
-  })
-  if (!res.ok) throw new Error(`drift failed: ${res.status} ${await res.text()}`)
-  return (await res.json()) as DriftReport
-}
-
-// DEMO: fabricate an Amazon-style rewrite of the baseline and run the real drift agent on it.
-export async function simulateRewrite(
-  baseline: ScrapedListing
-): Promise<{ simulatedTitle: string; report: DriftReport }> {
-  const res = await fetch(`${API_BASE}/api/simulate`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ baseline }),
-  })
-  if (!res.ok) throw new Error(`simulate failed: ${res.status} ${await res.text()}`)
-  return (await res.json()) as { simulatedTitle: string; report: DriftReport }
-}
-
-// ---- Baseline persistence (chrome.storage.local, keyed by ASIN) ----
-const baselineKey = (asin: string) => `baseline:${asin}`
-
-export async function getBaseline(asin: string): Promise<BaselineRecord | null> {
-  const key = baselineKey(asin)
-  const store = await chrome.storage.local.get(key)
-  return (store[key] as BaselineRecord | undefined) ?? null
-}
-
-export async function saveBaseline(listing: ScrapedListing): Promise<BaselineRecord> {
-  const record: BaselineRecord = { listing, savedAt: new Date().toISOString() }
-  await chrome.storage.local.set({ [baselineKey(listing.asin)]: record })
-  return record
+export function reVerify(listing: ScrapedListing, draft: Draft): Promise<Verdict> {
+  return postJson<Verdict>('/api/verify', { listing, draft })
 }

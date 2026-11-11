@@ -2,10 +2,10 @@ import { defineManifest } from '@crxjs/vite-plugin'
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'Listing Creative AI',
+  name: 'Listing Intelligence Agent',
   version: '0.1.0',
   description:
-    'Generate high-converting Amazon main images & infographics right on the product page.',
+    'On-page AI agents that research and rewrite your Amazon listing into a July-27-compliant title + Item Highlights, verified before you publish.',
   icons: {
     '16': 'icons/icon16.png',
     '48': 'icons/icon48.png',
@@ -21,7 +21,7 @@ export default defineManifest({
   side_panel: {
     default_path: 'src/sidepanel/index.html',
   },
-  permissions: ['sidePanel', 'activeTab', 'scripting', 'storage'],
+  permissions: ['sidePanel', 'storage'],
   host_permissions: [
     'https://*.amazon.com/*',
     'https://*.amazon.co.uk/*',

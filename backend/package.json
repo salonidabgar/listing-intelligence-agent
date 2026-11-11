@@ -5,13 +5,19 @@
   "type": "module",
   "description": "Vercel serverless backend for Listing Creative AI: creative brief (Claude) + image generation (Gemini 2.5 Flash Image).",
   "scripts": {
-    "dev": "tsx dev-server.ts",
+    "dev": "(lsof -tiTCP:3000 -sTCP:LISTEN | xargs kill -9) 2>/dev/null; tsx dev-server.ts",
     "eval": "tsx eval/run.ts",
-    "deploy": "vercel deploy --prod"
+    "deploy": "vercel deploy --prod",
+    "fleet:demo": "tsx scripts/fleet-demo.ts",
+    "fleet:spike": "tsx scripts/jev-spike.ts",
+    "fleet:bench": "tsx eval/fleet-bench.ts",
+    "fleet:calibrate": "tsx scripts/jev-calibrate.ts",
+    "test": "node --import tsx --test test/*.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.112.3",
-    "@google/genai": "^1.30.0"
+    "@google/genai": "^1.30.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@vercel/node": "^5.1.0",

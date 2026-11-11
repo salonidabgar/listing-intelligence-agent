@@ -1,6 +1,6 @@
 # Drift-detection eval scorecard
 
-Model: `claude-sonnet-4-6` · 31 labeled examples · 72s
+Model: `claude-sonnet-4-6` · 31 labeled examples · 67s
 
 | Metric | Value |
 |---|---|

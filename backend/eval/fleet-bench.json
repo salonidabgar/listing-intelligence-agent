@@ -1,0 +1,696 @@
+{
+  "at": "2026-11-11T16:59:52.238Z",
+  "reports": {
+    "jev": {
+      "model": "jev-1.13.0",
+      "bundle": {
+        "correct": 6,
+        "acceptable": 9,
+        "unsure": 1,
+        "n": 12
+      },
+      "quality": {
+        "inRange": 9,
+        "n": 12
+      },
+      "risk": {
+        "inRange": 11,
+        "n": 12
+      },
+      "gate": {
+        "correct": 7,
+        "n": 8
+      },
+      "rubric": {
+        "correct": 3,
+        "n": 4
+      },
+      "p50_ms": 409,
+      "p95_ms": 662,
+      "usd_per_decision": 0.00022200000000000003,
+      "calls": 36,
+      "errors": [],
+      "preds": [
+        {
+          "case": "thin-supplement",
+          "quality": 0,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              0
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "thin-cable",
+          "quality": 0,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              0
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "thin-sheets",
+          "quality": 0,
+          "risk": 1,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              1
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "overlimit-supplement",
+          "quality": 1,
+          "risk": 2,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "case": "flagged-claims",
+          "quality": 1,
+          "risk": 3,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "case": "flagged-cosmetic",
+          "quality": 1,
+          "risk": 3,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "case": "strong-knife",
+          "quality": 2,
+          "risk": 0,
+          "bundle": "full",
+          "expected": {
+            "bundle": "reposition",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "strong-coffee",
+          "quality": 2,
+          "risk": 0,
+          "bundle": "full",
+          "expected": {
+            "bundle": "reposition",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "average-bulb",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "thin_listing"
+            ],
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "average-protein",
+          "quality": 1,
+          "risk": 2,
+          "bundle": "unsure(compliance_first)",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "thin_listing"
+            ],
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "average-sheets",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "reposition"
+            ],
+            "quality": [
+              2,
+              2
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "overlimit-cable",
+          "quality": 1,
+          "risk": 1,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "compliance_first",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              2
+            ],
+            "risk": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "case": "g-good-aco",
+          "p_usable": 0.52,
+          "expected": true
+        },
+        {
+          "case": "g-good-market",
+          "p_usable": 0.9,
+          "expected": true
+        },
+        {
+          "case": "g-generic",
+          "p_usable": 0.02,
+          "expected": false
+        },
+        {
+          "case": "g-empty",
+          "p_usable": 0.01,
+          "expected": false
+        },
+        {
+          "case": "g-offproduct",
+          "p_usable": 0.01,
+          "expected": false
+        },
+        {
+          "case": "g-good-voice",
+          "p_usable": 0.71,
+          "expected": true
+        },
+        {
+          "case": "g-vague-market",
+          "p_usable": 0.04,
+          "expected": false
+        },
+        {
+          "case": "g-good-compliance",
+          "p_usable": 0.57,
+          "expected": true
+        },
+        {
+          "case": "r-ready",
+          "pass": false,
+          "expected": true,
+          "parts": {
+            "overall": 0.07,
+            "grounded": 0.05,
+            "keyword_coverage": 0.29,
+            "compliance": 0.29,
+            "specificity": 0.77
+          }
+        },
+        {
+          "case": "r-invented",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.04,
+            "grounded": 0.04,
+            "keyword_coverage": 0.25,
+            "compliance": 0.07,
+            "specificity": 0.68
+          }
+        },
+        {
+          "case": "r-vague",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.02,
+            "grounded": 0.11,
+            "keyword_coverage": 0.08,
+            "compliance": 0.49,
+            "specificity": 0.05
+          }
+        },
+        {
+          "case": "r-claims",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.01,
+            "grounded": 0.01,
+            "keyword_coverage": 0.14,
+            "compliance": 0.01,
+            "specificity": 0.08
+          }
+        }
+      ]
+    },
+    "claude-opus-5-5": {
+      "model": "claude-opus-5-5",
+      "bundle": {
+        "correct": 7,
+        "acceptable": 9,
+        "unsure": 2,
+        "n": 12
+      },
+      "quality": {
+        "inRange": 9,
+        "n": 12
+      },
+      "risk": {
+        "inRange": 11,
+        "n": 12
+      },
+      "gate": {
+        "correct": 7,
+        "n": 8
+      },
+      "rubric": {
+        "correct": 3,
+        "n": 4
+      },
+      "p50_ms": 2210,
+      "p95_ms": 3448,
+      "usd_per_decision": 0.006933666666666668,
+      "calls": 36,
+      "errors": [],
+      "preds": [
+        {
+          "case": "thin-supplement",
+          "quality": 0,
+          "risk": 2,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              0
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "thin-cable",
+          "quality": 0,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              0
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "thin-sheets",
+          "quality": 0,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "thin_listing",
+            "quality": [
+              0,
+              1
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "overlimit-supplement",
+          "quality": 2,
+          "risk": 2,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "case": "flagged-claims",
+          "quality": 1,
+          "risk": 3,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "case": "flagged-cosmetic",
+          "quality": 1,
+          "risk": 3,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "case": "strong-knife",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "unsure(full)",
+          "expected": {
+            "bundle": "reposition",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "strong-coffee",
+          "quality": 2,
+          "risk": 0,
+          "bundle": "unsure(full)",
+          "expected": {
+            "bundle": "reposition",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              3
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "average-bulb",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "thin_listing"
+            ],
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "average-protein",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "thin_listing"
+            ],
+            "quality": [
+              1,
+              2
+            ],
+            "risk": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "case": "average-sheets",
+          "quality": 1,
+          "risk": 0,
+          "bundle": "thin_listing",
+          "expected": {
+            "bundle": "full",
+            "alt": [
+              "reposition"
+            ],
+            "quality": [
+              2,
+              2
+            ],
+            "risk": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "case": "overlimit-cable",
+          "quality": 1,
+          "risk": 1,
+          "bundle": "compliance_first",
+          "expected": {
+            "bundle": "compliance_first",
+            "alt": [
+              "full"
+            ],
+            "quality": [
+              2,
+              2
+            ],
+            "risk": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "case": "g-good-aco",
+          "p_usable": 0.45,
+          "expected": true
+        },
+        {
+          "case": "g-good-market",
+          "p_usable": 0.85,
+          "expected": true
+        },
+        {
+          "case": "g-generic",
+          "p_usable": 0.03,
+          "expected": false
+        },
+        {
+          "case": "g-empty",
+          "p_usable": 0.02,
+          "expected": false
+        },
+        {
+          "case": "g-offproduct",
+          "p_usable": 0.03,
+          "expected": false
+        },
+        {
+          "case": "g-good-voice",
+          "p_usable": 0.85,
+          "expected": true
+        },
+        {
+          "case": "g-vague-market",
+          "p_usable": 0.03,
+          "expected": false
+        },
+        {
+          "case": "g-good-compliance",
+          "p_usable": 0.68,
+          "expected": true
+        },
+        {
+          "case": "r-ready",
+          "pass": false,
+          "expected": true,
+          "parts": {
+            "overall": 0.04,
+            "grounded": 0.05,
+            "keyword_coverage": 0.2,
+            "compliance": 0.3,
+            "specificity": 0.75
+          }
+        },
+        {
+          "case": "r-invented",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.03,
+            "grounded": 0.04,
+            "keyword_coverage": 0.2,
+            "compliance": 0.04,
+            "specificity": 0.6
+          }
+        },
+        {
+          "case": "r-vague",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.02,
+            "grounded": 0.15,
+            "keyword_coverage": 0.05,
+            "compliance": 0.35,
+            "specificity": 0.03
+          }
+        },
+        {
+          "case": "r-claims",
+          "pass": false,
+          "expected": false,
+          "parts": {
+            "overall": 0.02,
+            "grounded": 0.02,
+            "keyword_coverage": 0.1,
+            "compliance": 0.01,
+            "specificity": 0.12
+          }
+        }
+      ]
+    }
+  },
+  "full": []
+}

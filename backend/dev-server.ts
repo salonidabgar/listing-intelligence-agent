@@ -54,7 +54,7 @@ const server = createServer((req, res) => {
   if (url.startsWith('/api/drift')) return adapt(drift)(req, res)
   if (url.startsWith('/api/simulate')) return adapt(simulate)(req, res)
   res.setHeader('content-type', 'application/json')
-  res.end(JSON.stringify({ ok: true, endpoints: ['/api/analyze', '/api/generate'] }))
+  res.end(JSON.stringify({ ok: true, endpoints: ['/api/research', '/api/verify', '/api/drift', '/api/simulate'] }))
 })
 
 const PORT = Number(process.env.PORT ?? 3000)

@@ -28,16 +28,24 @@ export function runDrift(
 }
 
 const VERIFY_ROLE =
-  'You are an adversarial reviewer. Red-team this listing draft for factual overreach, Amazon policy violations, title (<=75) and Item-Highlights (<=125) length limits, and any lost selling specifics vs the original. Count characters exactly.'
+  'You are an adversarial reviewer red-teaming a listing draft. The exact character counts are given to you — do NOT recount them. Report ONLY genuinely blocking or high-severity problems: policy violations, over-limit fields, unsubstantiated or regulated claims, or a selling specific lost vs the original. Be terse — at most 3 risks and at most 2 compliance notes, each a short actionable clause under ~14 words. If the draft is clean, return empty arrays. The verdict field is ONE short sentence. When you mention a character count, use only the exact numbers provided.'
 
-export function runVerify(
+export async function runVerify(
   listing: Pick<ScrapedListing, 'title'>,
   draft: Draft
 ): Promise<Verdict> {
-  return runStructured<Verdict>({
+  // Character counts are deterministic — compute them in code, never trust the
+  // model to count (LLMs miscount characters).
+  const titleCharCount = draft.optimizedTitle.length
+  const highlightsCharCount = draft.itemHighlights.length
+
+  const verdict = await runStructured<Verdict>({
     effort: 'medium',
     schema: VERDICT_SCHEMA,
     role: VERIFY_ROLE,
-    prompt: `ORIGINAL TITLE: ${listing.title}\n\nDRAFT:\nTitle: ${draft.optimizedTitle}\nItem Highlights: ${draft.itemHighlights}\nBullets:\n${draft.bullets.map((b) => '- ' + b).join('\n')}`,
+    prompt: `Character counts (exact, authoritative): Title = ${titleCharCount} chars (limit 75), Item Highlights = ${highlightsCharCount} chars (limit 125).\n\nORIGINAL TITLE: ${listing.title}\n\nDRAFT:\nTitle: ${draft.optimizedTitle}\nItem Highlights: ${draft.itemHighlights}\nBullets:\n${draft.bullets.map((b) => '- ' + b).join('\n')}`,
   })
+
+  // Override whatever the model reported with the true counts.
+  return { ...verdict, titleCharCount, highlightsCharCount }
 }

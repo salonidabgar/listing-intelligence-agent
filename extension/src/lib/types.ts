@@ -60,42 +60,31 @@ export interface Draft {
   bullets: string[]
 }
 
-// ---- Drift monitoring ----
-export interface DriftChange {
-  field: string
-  before: string
-  after: string
-  severity: 'critical' | 'high' | 'medium' | 'low'
-  impact: string
-}
-
-export interface DriftCause {
-  type: 'amazon_ai_rewrite' | 'manual_edit' | 'catalog_or_shared_asin' | 'no_material_change' | 'unknown'
-  confidence: 'high' | 'medium' | 'low'
-  reasoning: string
-}
-
-export interface DriftReport {
-  changed: boolean
-  summary: string
-  changes: DriftChange[]
-  droppedSpecifics: string[]
-  likelyCause: DriftCause
-  recommendation: string
-}
-
-export interface BaselineRecord {
-  listing: ScrapedListing
-  savedAt: string // ISO
-}
-
 // Newline-delimited events streamed from /api/research.
 export type ResearchEvent =
   | { type: 'start'; lenses: { key: string; label: string }[] }
   | { type: 'agent_start'; key: string; label: string }
   | { type: 'agent_done'; key: string; label: string; finding: LensFinding }
   | { type: 'agent_error'; key: string; label: string; message: string }
+  | { type: 'keywords'; alias: string; seeds: string[]; terms: string[] }
   | { type: 'synthesis'; plan: ListingPlan }
   | { type: 'verdict'; verdict: Verdict }
-  | { type: 'done' }
-  | { type: 'fatal'; message: string }
+  | { type: 'done'; fleet?: FleetSummary }
+  | { type: 'fatal'; message: string; fleet?: FleetSummary }
+  // ---- Jev-orchestrated fleet (backend FLEET_MODE=shadow|live); safe to ignore ----
+  | { type: 'agent_skipped'; key: string; label: string; reason: string }
+  | { type: 'decision'; run: string; node: string; answers: Record<string, unknown>; latency_ms: number; model: string; shadow: boolean }
+  | { type: 'edge'; run: string; from: string; label: string; to: string }
+
+export interface FleetSummary {
+  run_id: string
+  mode: 'shadow' | 'live'
+  status?: 'complete' | 'incomplete' | 'no_plan'
+  // Staged-change guard. The real approval is the button in this panel, never the model.
+  approval?: 'allow' | 'confirm' | 'human_review' | null
+  lens_bundle?: string
+  rubric?: { pass: boolean; rounds: number; failing: string[] } | null
+  jev_calls: number
+  agent_calls: number
+  wall_ms: number
+}

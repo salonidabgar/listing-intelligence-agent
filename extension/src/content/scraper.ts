@@ -23,8 +23,10 @@ function getAsin(): string | null {
   // 2) Hidden input / data attribute
   const input = document.querySelector<HTMLInputElement>('input#ASIN, input[name="ASIN"]')
   if (input?.value && /^[A-Z0-9]{10}$/i.test(input.value)) return input.value.toUpperCase()
+  // Scope to the detail-page containers so we don't grab a carousel /
+  // "sponsored" ASIN from a recommendation strip on the page.
   const dataAsin = document
-    .querySelector('[data-asin]')
+    .querySelector('#dp [data-asin], #ppd [data-asin], #centerCol [data-asin], [data-asin]')
     ?.getAttribute('data-asin')
   if (dataAsin && /^[A-Z0-9]{10}$/i.test(dataAsin)) return dataAsin.toUpperCase()
   return null
@@ -128,7 +130,7 @@ export function scrapeListing(): ScrapedListing | null {
     reviews: getReviews(),
     mainImage: getMainImage(),
     galleryImages: getGallery(),
-    marketplace: location.hostname.replace('www.', ''),
+    marketplace: location.hostname.replace(/^www\./, ''),
     url: location.href,
   }
 }

@@ -6,3 +6,10 @@ dist/
 *.log
 .DS_Store
 demo/
+
+# local-only (kept on disk, not in the repo)
+LEARNING_LOG.md
+architecture-overview.drawio
+architecture-overview.svg
+old-vs-new-architecture.drawio
+old-vs-new-architecture.svg
